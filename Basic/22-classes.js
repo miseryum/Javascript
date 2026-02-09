@@ -20,10 +20,10 @@ class Person {
 let person = new Person("Brais", 37, "MoureDev")
 let person2 = new Person("Brais", 37, "MoureDev")
 
-console.log(person)
+console.log(Person)
 console.log(person2)
 
-console.log(typeof person)
+console.log(typeof Person)
 
 // Valores por defecto
 
@@ -98,7 +98,7 @@ console.log(person5)
 
 // Getters y Setters
 
-class GetSetPerson {
+export class GetSetPerson {
 
     #name
     #age

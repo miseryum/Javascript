@@ -4,11 +4,27 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=20392
 */
 
 // 1. Captura una excepción utilizando try-catch
+try{
+const Franco = "Franco"
+Franco = "Marcos"
+}catch{
+}
 
 // 2. Captura una excepción utilizando try-catch y finally
 
-// 3. Lanza una excepción genérica
+try{
+    Franco = "Marcos"
+}catch{
+}finally{
+    console.log("Fin del programa")
+}
 
+// 3. Lanza una excepción genérica
+try{
+    Franco = "Marcos"
+}catch{
+    console.log("Se produjo un error y fue atrapado.")
+}
 // 4. Crea una excepción personalizada
 
 // 5. Lanza una excepción personalizada
