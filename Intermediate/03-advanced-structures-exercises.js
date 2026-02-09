@@ -60,19 +60,46 @@ let union = new Set([...set1, ...set2])
 console.log(union)
 let inter = new Set([...set1].filter(element => set2.has(element)))
 console.log(inter)
-const simetry = (a,b) => new Set([
+let simetry = (a,b) => new Set([
     ...[...a].filter(x => !b.has(x)),
     ...[...b].filter(x => !a.has(x))]
     )
 console.log(simetry(set1, set2))
 
+
 // 6. Itera los resultados del ejercicio anterior
 
+let sextoSet = new Set([["Resultado1",...union],["Resultado2",...inter],["Resultado3",...simetry(set1,set2)]])
+sextoSet.forEach(element => { console.log(element)
+
+    
+});
 
 // 7. Crea un mapa que almacene información se usuarios (nombre, edad y email) e itera los datos
+const usuarios = new Map([
+    ["usuario1", {name: "Franco", age : 27, mail :"franco@fran.com" }],
+    ["usuario2", {name: "ana", age : 22, mail : "ana@ana.com" }],
+    ["usuario4", {name: "zaira",age : 15, mail : "zau@ana.com" }],
+    ["usuario5", {name: "mailen", age : 16, mail : "maieln@ana.com" }],
+    ["usuario3", {name: "fer", age : 25, mail :  "fer@fer.com" }]
+])
+console.log(usuarios)
+usuarios.forEach((info, id) => {
+    console.log(id)
+    console.log(info.name)
+    console.log(info.age)
+    console.log(info.mail)
+
+})
+
 
 // 8. Dado el mapa anterior, crea un array con los nombres
+const newArrayNombres = [...usuarios.values()].map(u => u.name)
+console.log(newArrayNombres)
 
 // 9. Dado el mapa anterior, obtén un array con los email de los usuarios mayores de edad y transfórmalo a un set
-
+const setMayores =  new Set([...usuarios.values()].filter(u => u.age >= 18).map(u => u.mail))
+console.log(setMayores)
 // 10. Transforma el mapa en un objeto, a continuación, transforma el objeto en un mapa con clave el email de cada usuario y como valor todos los datos del usuario
+const objetsupremo = Object.fromEntries(usuarios)
+console.log(objetsupremo)
