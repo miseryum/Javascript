@@ -5,13 +5,49 @@ Vídeo: https://youtu.be/iJvLAZ8MJ2E?t=14558
 
 // 1. Crea una función para saludar que reciba un nombre y un callback. 
 //    El callback debe ejecutarse después de 2 segundos y mostrar en consola "Hola, [nombre]".
+function saludar(callback, nombre){
+setTimeout(() => {
+    callback(nombre)
+}, 2000)
+}
+saludar((nombre)=>{console.log(`Hola, ${nombre}`)},"Franco")
+
 
 // 2. Crea tres funciones task1(callback), task2(callback) y task3(callback). 
 //    Cada función debe tardar 1 segundo en ejecutarse y luego llamar al callback.
+function task1(callback){
+setTimeout(()=> {
+    console.log("Paso 1 completado")
+    callback()
+},1000)}
+function task2(callback){
+    setTimeout(()=> {
+    console.log("Paso 2 completado")
+    callback()
+},1000)}
+function task3(callback){
+setTimeout(()=> {
+    console.log("Paso 3 completado")
+    callback()
+},1000)}
 
+task1(()=>{
+    task2(()=>{
+        task3(()=>{
+        console.log("todos los pasos fueron completados")
+        })
+    })
+})
 // 3. Crea una función para verificar un número que retorne una Promesa. 
 //    Si el número es par, la promesa se resuelve con el mensaje "Número par". 
 //    Si el número es impar, la promesa se rechaza con el mensaje "Número impar".
+const promesa = new promise((resolve, rejected, num) => {
+    if (num % 2 === 0){
+        resolve("El numero es par!")
+    }else{
+        rejected("El numero es impar.")
+    }
+})
 
 // 4. Crea tres funciones que devuelvan promesas:
 //    firstTask(): tarda 1s y muestra "Primera tarea completada".
