@@ -175,5 +175,54 @@ aparato1.Encender();
 aparato2.Encender();
 
 // 9. Crea un Singleton
+class Session {
+    constructor(name){
+        if (!Session.instance){
+            this.name = name
+            Session.instance = this
+        }
+        return Session.instance
+    }
+}
+
+
+const Session1 = new Session("Session franco")
+console.log(Session1.name)
+const Session2 = new Session("Session Luciano")
+console.log(Session2.name)
+
 
 // 10. Desarrolla un Proxy
+
+const miProxy = {
+    get(Objeto, Propiedad){
+        console.log(`Acabas de acceder a la propiedad : ${Propiedad}`);
+        return Objeto[Propiedad];
+    },
+    set(Objeto, Propiedad, NuevoValor){
+        if(Propiedad === "saldo" && NuevoValor < 0){
+            throw new Error('❌Saldo Invalido.❌');
+    }
+    Objeto[Propiedad] = NuevoValor;
+    if (Propiedad === "saldo"){
+    console.info(`Saldo de ${Objeto.nombre} modificado Exitosamente✅`);
+    }
+    if (Propiedad === "nombre"){
+    console.info(`Nombre modificado Exitosamente✅`);
+    }
+    return true; // si la estructura fue exitosa, tiene que devolver true asi el motor sabe que fue correcta, si no, lo deja en false y strictmode puede generar errores
+}
+}
+
+class cuentaBancaria{
+    constructor(nombre,saldo){
+        this.nombre = nombre,
+        this.saldo = saldo
+    }
+}
+const cuenta1 = new Proxy(new cuentaBancaria("Franco",4000), miProxy);
+
+console.log(cuenta1.nombre);
+console.log(cuenta1.saldo);
+cuenta1.saldo = 2040;
+console.log(cuenta1.saldo);
